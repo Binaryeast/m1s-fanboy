@@ -13,13 +13,16 @@ wpi.wiringPiSetup()
 wpi.pinMode(FAN_PIN, wpi.PWM_OUTPUT)
 wpi.pwmSetClock(CLK)    # 25kHz 주파수 (19.2MHz / 19 / 1024 ≈ 25kHz)
 wpi.pwmSetRange(RNG)  # 0-1024 범위
+print("fan init.")
 
 def fan_on():
     duty_value = int(RNG)
     wpi.pwmWrite(FAN_PIN, duty_value)
+    print("fan on.")
 
 def fan_off():
     wpi.pwmWrite(FAN_PIN, 0)
+    print("fan off.")
 
 try:
     fan_off()
